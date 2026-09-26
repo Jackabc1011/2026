@@ -60,6 +60,25 @@ python -m collector --loop 15    # 每 15 分钟采集一次（本地常驻）
 
 权重和阈值都在 `config.yaml` 的 `scoring` 里调整。
 
+## 评分历史与提醒
+
+每次采集都会把各币种的得分记进 `docs/data/history.json`（保留最近 96 次，按每 30 分钟一次算约 48 小时）。面板上因此多了三样东西：
+
+- 综合分旁边显示和上一次采集相比的变化（▲/▼），刚上榜的币种标一个「新」
+- 展开某一行能看到最近 24 次的评分走势线，虚线是「重点关注」的门槛 55
+- 筛选栏里多了「上升/新上榜」，只显示新上榜或者比上次涨了 5 分以上的币种
+
+某个币种**这次刚升级成「重点关注」**时会推送提醒，每次运行最多推 5 条。要开启推送，配置下面任意一种渠道：
+
+| 渠道 | 环境变量 |
+|---|---|
+| Telegram | `TELEGRAM_BOT_TOKEN`、`TELEGRAM_CHAT_ID` |
+| 飞书 / 钉钉 / Discord / Slack 群机器人 | `ALERT_WEBHOOK_URL`（根据网址自动识别是哪家） |
+
+提醒内容：综合分和变化、价格、主要信号、风险，以及行情链接。可以设置 `DASHBOARD_URL`，在提醒里附上面板地址。
+
+第一次运行时还没有历史数据，所以不会推送。某次采集如果所有数据源都失败了，那一次不会写入历史，免得下一次把所有币种都当成新上榜。`--demo` 用的是模拟历史，不会写入 history.json。
+
 ## 配置 KOL 与钱包
 
 编辑 `config.yaml`：
@@ -77,10 +96,12 @@ python -m collector --loop 15    # 每 15 分钟采集一次（本地常驻）
 `.github/workflows/radar.yml` 每 30 分钟采集一次，结果发布到 GitHub Pages：
 
 1. 进入仓库的 Settings → Pages，把 Source 设为 **GitHub Actions**
-2. 在 Settings → Secrets and variables → Actions 里添加需要的 Key
+2. 在 Settings → Secrets and variables → Actions 里添加需要的 Key（包括提醒用的 `TELEGRAM_*`、`ALERT_WEBHOOK_URL`）
 3. 在 Actions 页面手动运行一次 “Alpha Radar”
 
 注意：
+- GitHub 的定时任务只会在**默认分支**上运行，所以要先把代码合并到 main 才会自动跑。
+- Actions 每次运行不会保留上次的文件，评分历史是从已经发布的站点 `<面板地址>/data/history.json` 读回来的。如果用了自定义域名，要在仓库变量里设置 `DASHBOARD_URL`。
 - Pages 站点是**公开**的，钱包列表和面板内容所有人都能看到。私有仓库启用 Pages 需要付费套餐。
 - X API 按调用量计费：14 个 KOL、每 30 分钟一次，每天大约 700 次请求。可以减少 KOL 数量或降低 cron 频率。
 - AI 简报每次运行都会调用一次 Claude API。
@@ -96,6 +117,8 @@ collector/
   extract.py             从文本里识别币种和合约地址
   distill.py             四维打分、共振判断、风险标记
   brief.py               Claude 生成的中文简报（可选）
+  history.py             评分历史：变化、新上榜、走势、新晋重点关注
+  alerts.py              Telegram / 群机器人推送
   demo.py                离线模拟数据
 docs/                    静态面板（index.html / app.js / style.css / data/latest.json）
 tests/                   单元测试：python -m unittest discover -s tests

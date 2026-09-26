@@ -109,12 +109,42 @@
         <i class="d-${k}" style="height:${Math.max(2, c[k] * 0.26)}px"></i></span>`).join("")}</div>`;
   }
 
+  function deltaHtml(o) {
+    if (o.is_new) return '<span class="delta new" title="本次新上榜">新</span>';
+    if (o.delta == null || Math.abs(o.delta) < 1) return '<span class="delta"></span>';
+    const up = o.delta > 0;
+    return `<span class="delta ${up ? "up" : "down"}" title="较上次采集 ${up ? "+" : "−"}${Math.abs(o.delta).toFixed(1)}">${up ? "▲" : "▼"}${Math.abs(o.delta).toFixed(0)}</span>`;
+  }
+
+  // Score trend: one line on a fixed 0-100 axis, gaps where the token was off the list.
+  function sparkline(trend) {
+    if (!trend || trend.filter((v) => v != null).length < 2) return '<div class="muted small">历史数据不足</div>';
+    const W = 220, H = 48, P = 4, n = trend.length;
+    const x = (i) => P + (i * (W - 2 * P)) / Math.max(1, n - 1);
+    const y = (v) => H - P - (v / 100) * (H - 2 * P);
+    let d = "", pen = false;
+    trend.forEach((v, i) => {
+      if (v == null) { pen = false; return; }
+      d += `${pen ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`;
+      pen = true;
+    });
+    const last = trend[n - 1];
+    const pts = trend.map((v, i) => v == null ? "" :
+      `<rect class="hit" x="${(x(i) - (W / n) / 2).toFixed(1)}" y="0" width="${(W / n).toFixed(1)}" height="${H}" data-tip="${n - 1 - i === 0 ? "本次" : (n - 1 - i) + " 次前"}：${v.toFixed(0)}"></rect>`).join("");
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="评分走势，最新 ${last.toFixed(0)}">
+      <line class="grid" x1="${P}" x2="${W - P}" y1="${y(55)}" y2="${y(55)}"></line>
+      <path d="${d}"></path>
+      <circle cx="${x(n - 1)}" cy="${y(last)}" r="4"></circle>${pts}</svg>
+      <div class="muted small">虚线 = 重点关注门槛 55</div>`;
+  }
+
   function filteredOpps() {
     const q = state.query.trim().toUpperCase();
     return (state.data.opportunities || []).filter((o) => {
       if (q && !o.symbol.includes(q) && !(o.name || "").toUpperCase().includes(q)) return false;
       if (state.rating === "重点关注" && o.rating !== "重点关注") return false;
       if (state.rating === "观察" && o.rating === "噪音") return false;
+      if (state.rating === "rising" && !(o.is_new || (o.delta ?? 0) >= 5)) return false;
       if (state.hideRisky && o.risks.length >= 2) return false;
       return true;
     });
@@ -131,6 +161,9 @@
     const created = m.pair_created_at ? new Date(m.pair_created_at).toLocaleDateString() : "—";
     return `<div class="detail-grid">
       <div>
+        <h3>评分走势 <span class="muted">（最近 ${o.trend ? o.trend.length : 0} 次采集）</span></h3>
+        ${sparkline(o.trend)}
+        <div class="muted small">首次上榜：${o.first_seen ? new Date(o.first_seen).toLocaleString() : "—"}</div>
         <h3>四维得分</h3>
         <div class="kv">${Object.entries(DIM_LABELS).map(([k, l]) => `<span>${l}</span><span>${o.components[k].toFixed(1)}</span>`).join("")}
           <span>共振维度</span><span>${o.confluence} / 4</span></div>
@@ -170,7 +203,7 @@
       const row = `<tr class="row${open ? " open" : ""}" data-sym="${esc(o.symbol)}" tabindex="0" aria-expanded="${open}">
         <td class="num hide-sm">${i + 1}</td>
         <td><span class="sym">${esc(o.symbol)}</span>${chain}<span class="sym-name">${esc(o.name)}</span></td>
-        <td><div class="score"><b>${o.score.toFixed(0)}</b><span class="bar"><i style="width:${o.score}%"></i></span></div></td>
+        <td><div class="score">${deltaHtml(o)}<b>${o.score.toFixed(0)}</b><span class="bar"><i style="width:${o.score}%"></i></span></div></td>
         <td>${dimsHtml(o.components)}</td>
         <td class="num hide-sm">${fmtPrice(m.price)}</td>
         <td class="num hide-sm">${fmtPct(m.change_1h)}</td>

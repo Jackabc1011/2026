@@ -176,6 +176,14 @@ tr.row.open td { background: var(--surface-2); border-bottom-color: transparent;
 .dim { width: 10px; height: 100%; display: flex; align-items: flex-end; padding: 0 1px; }
 .dim i { display: block; width: 100%; border-radius: 3px 3px 0 0; min-height: 2px; }
 .muted { color: var(--text-3); }
+.small { font-size: 12px; }
+.delta { font-size: 11px; min-width: 26px; text-align: right; font-variant-numeric: tabular-nums; }
+.delta.new { color: var(--hot-text); background: var(--hot-bg); border-radius: 4px; padding: 0 4px; text-align: center; font-weight: 600; }
+.spark { display: block; overflow: visible; }
+.spark path { fill: none; stroke: var(--d-social); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.spark circle { fill: var(--d-social); stroke: var(--surface-2); stroke-width: 2; }
+.spark .grid { stroke: var(--text-3); stroke-width: 1; stroke-dasharray: 3 3; opacity: .6; }
+.spark .hit { fill: transparent; }
 .up { color: var(--good); }
 .down { color: var(--bad); }
 .chips { display: flex; flex-wrap: wrap; gap: 4px; max-width: 360px; }

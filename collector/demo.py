@@ -94,3 +94,30 @@ def demo_payload(config):
         "- NOVA：社交+链上双信号；风险是 FDV 偏高。\n\n"
         "**注意**：KITTY 24h 已涨 210% 且流动性低，偏向追高/付费推广。")}
     return payload
+
+
+def demo_history(payload, points=23):
+    """Fictional past snapshots so the demo shows deltas, new entries and trend lines."""
+    rnd = random.Random(7)
+    now = datetime.fromisoformat(payload["generated_at"].replace("Z", "+00:00"))
+    shape = {"FROGX": (35, "rise"), "KITTY": (70, "fall"), "BLOOM": (60, "flat")}
+    snaps = []
+    for i in range(points, 0, -1):
+        t = (now - timedelta(minutes=30 * i)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        progress = 1 - i / points
+        scores, ratings = {}, {}
+        for o in payload["opportunities"]:
+            sym = o["symbol"]
+            if sym == "NOVA":
+                continue  # brand-new this run
+            start, kind = shape.get(sym, (o["score"], "flat"))
+            if kind == "rise":
+                s = start + (o["score"] - 8 - start) * progress
+            elif kind == "fall":
+                s = start + (o["score"] - start) * progress
+            else:
+                s = o["score"]
+            scores[sym] = round(max(0, s + rnd.uniform(-3, 3)), 1)
+            ratings[sym] = "观察" if scores[sym] >= 35 else "噪音"
+        snaps.append({"t": t, "scores": scores, "ratings": ratings})
+    return {"snapshots": snaps}

@@ -8,10 +8,13 @@ from pathlib import Path
 import yaml
 
 from . import http
+from .alerts import send_alerts
 from .distill import distill
 from .extract import build_alias_patterns
+from .history import apply_history, load_history, save_history
 from .payload import build_payload
 from .sources import market, wallets, x_kol
+
 
 def collect(config):
     http.STATUS.clear()
@@ -107,13 +110,22 @@ def main():
 
     config = yaml.safe_load(Path(args.config).read_text(encoding="utf-8"))
     out = args.out or config.get("output", "docs/data/latest.json")
+    hist_path = Path(out).with_name("history.json")
     while True:
         if args.demo:
-            from .demo import demo_payload
+            from .demo import demo_history, demo_payload
             payload = demo_payload(config)
+            apply_history(payload, demo_history(payload))  # annotate only; never touch real history
+            history = None
         else:
             payload = collect(config)
+            history, newly_hot = apply_history(payload, load_history(hist_path))
+            n = send_alerts(newly_hot)
+            if n:
+                print(f"sent {n} alert(s)")
         write(payload, out)
+        if history is not None:
+            save_history(history, hist_path)
         if not args.loop:
             break
         time.sleep(args.loop * 60)
