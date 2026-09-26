@@ -3,6 +3,8 @@ name: Alpha Radar
 # Collects data every 30 minutes and publishes the dashboard to GitHub Pages.
 # One-time setup: Settings → Pages → Source: "GitHub Actions";
 # Settings → Secrets and variables → Actions: add the API keys you want to use.
+# Scheduled runs are off until the repo variable RADAR_ENABLED is "true" (they cost
+# Actions minutes on private repos); manual "Run workflow" always works.
 on:
   schedule:
     - cron: "7,37 * * * *"
@@ -19,6 +21,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || vars.RADAR_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:

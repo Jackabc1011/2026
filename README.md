@@ -94,17 +94,27 @@ python -m collector --loop 15    # 每 15 分钟采集一次（本地常驻）
 
 ## 自动部署到 GitHub Pages
 
-`.github/workflows/radar.yml` 每 30 分钟采集一次，结果发布到 GitHub Pages：
+`.github/workflows/radar.yml` 可以每 30 分钟采集一次，并把结果发布到 GitHub Pages。**定时运行默认是关闭的**，需要手动开启，免得在还没配置好的时候白白消耗 Actions 分钟数。
 
 1. 进入仓库的 Settings → Pages，把 Source 设为 **GitHub Actions**
-2. 在 Settings → Secrets and variables → Actions 里添加需要的 Key（包括提醒用的 `TELEGRAM_*`、`ALERT_WEBHOOK_URL`）
-3. 在 Actions 页面手动运行一次 “Alpha Radar”
+2. 在 Settings → Secrets and variables → Actions 里添加需要的 Key（包括提醒用的 `TELEGRAM_*`、`ALERT_WEBHOOK_URL`，以及 RSSHub 用的 `TWITTER_AUTH_TOKEN`）
+3. 在 Actions 页面手动运行一次 “Alpha Radar”（手动运行不受开关限制），确认面板和推送都正常
+4. 在 Variables 里添加 `RADAR_ENABLED`，值填 `true`，定时运行才会开始
+
+**私有仓库还是公开仓库？**
+
+| | 私有仓库 | 公开仓库 |
+|---|---|---|
+| Pages | 需要 GitHub Pro 等付费套餐 | 免费 |
+| Actions 分钟数 | 每月免费 2000 分钟。每 30 分钟跑一次、每次约 2 分钟，一个月约 2900 分钟，**会超额**。建议把 cron 改成每小时一次（约 1450 分钟） | 不限 |
+| 可见性 | 代码不公开，但 Pages 站点仍然是公开的 | 代码、配置和面板都公开 |
+
+代码和配置里都没有密钥（密钥都存在 Secrets 里），所以公开仓库也可以。但要知道：`config.yaml` 里填的钱包地址，所有人都能看到。
 
 注意：
-- GitHub 的定时任务只会在**默认分支**上运行，所以要先把代码合并到 main 才会自动跑。
+- GitHub 的定时任务只会在**默认分支**上运行。
 - Actions 每次运行不会保留上次的文件，评分历史是从已经发布的站点 `<面板地址>/data/history.json` 读回来的。如果用了自定义域名，要在仓库变量里设置 `DASHBOARD_URL`。
-- Pages 站点是**公开**的，钱包列表和面板内容所有人都能看到。私有仓库启用 Pages 需要付费套餐。
-- X API 按调用量计费：14 个 KOL、每 30 分钟一次，每天大约 700 次请求。可以减少 KOL 数量或降低 cron 频率。
+- X API 按调用量计费：14 个 KOL、每 30 分钟一次，每天大约 700 次请求。可以减少 KOL 数量、降低 cron 频率，或者改用 RSSHub。
 - AI 简报每次运行都会调用一次 Claude API。
 
 ## 目录
