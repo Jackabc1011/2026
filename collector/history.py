@@ -1,18 +1,25 @@
 """Score history across runs: deltas, first-seen, trend lines and "newly hot" detection.
 
 History is a small JSON file next to latest.json:
-  {"snapshots": [{"t": iso, "scores": {SYM: score}, "ratings": {SYM: rating}}, ...]}
+  {"snapshots": [{"t": iso, "scores": {SYM: score}, "ratings": {SYM: rating}}, ...],
+   "alerted": {SYM: iso}}   # last alert per token, for the re-alert cooldown
 On GitHub Actions nothing persists between runs, so the previous file is fetched from
 the published Pages site (HISTORY_URL) when there is no local copy.
 """
 import json
 import os
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from .http import get_json
 
 MAX_SNAPSHOTS = 96    # 48h at one run per 30 min
 TREND_POINTS = 24
+ALERT_COOLDOWN_HOURS = 12
+
+
+def _dt(iso):
+    return datetime.fromisoformat(iso.replace("Z", "+00:00"))
 
 
 def load_history(path):
@@ -31,8 +38,12 @@ def load_history(path):
     return {"snapshots": []}
 
 
-def apply_history(payload, history, max_snapshots=MAX_SNAPSHOTS):
-    """Annotate payload opportunities in place; return (new_history, newly_hot)."""
+def apply_history(payload, history, max_snapshots=MAX_SNAPSHOTS, cooldown_hours=ALERT_COOLDOWN_HOURS):
+    """Annotate payload opportunities in place; return (new_history, newly_hot).
+
+    newly_hot = tokens rated 重点关注 now but not last run, and not alerted within the
+    cooldown - so a token flapping (e.g. one source failing for a run) alerts only once.
+    """
     snaps = [s for s in history.get("snapshots", []) if s.get("t") and s.get("t") < payload["generated_at"]]
     prev = snaps[-1] if snaps else None
 
@@ -53,15 +64,22 @@ def apply_history(payload, history, max_snapshots=MAX_SNAPSHOTS):
         if prev is not None and o["rating"] == "重点关注" and prev.get("ratings", {}).get(sym) != "重点关注":
             newly_hot.append(o)
 
+    now = _dt(payload["generated_at"])
+    cutoff = now - timedelta(hours=cooldown_hours)
+    alerted = {k: v for k, v in (history.get("alerted") or {}).items() if _dt(v) > cutoff}
+    newly_hot = [o for o in newly_hot if o["symbol"] not in alerted]
+    for o in newly_hot:
+        alerted[o["symbol"]] = payload["generated_at"]
+
     if not payload["opportunities"]:
         # A run where every source failed would make all tokens look "new" next time.
-        return {"snapshots": snaps[-max_snapshots:]}, newly_hot
+        return {"snapshots": snaps[-max_snapshots:], "alerted": alerted}, newly_hot
     snaps.append({
         "t": payload["generated_at"],
         "scores": {o["symbol"]: o["score"] for o in payload["opportunities"]},
         "ratings": {o["symbol"]: o["rating"] for o in payload["opportunities"] if o["rating"] != "噪音"},
     })
-    return {"snapshots": snaps[-max_snapshots:]}, newly_hot
+    return {"snapshots": snaps[-max_snapshots:], "alerted": alerted}, newly_hot
 
 
 def save_history(history, path):

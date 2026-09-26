@@ -51,6 +51,17 @@ class HistoryTest(unittest.TestCase):
         self.assertEqual(hot, [])
         self.assertFalse(p["opportunities"][0]["is_new"])
 
+    def test_flapping_token_alerts_once_within_cooldown(self):
+        h, hot = apply_history(payload("2026-09-26T10:00:00Z", {"AAA": (40, "观察")}), {"snapshots": []})
+        h, hot = apply_history(payload("2026-09-26T10:30:00Z", {"AAA": (60, "重点关注")}), h)
+        self.assertEqual([o["symbol"] for o in hot], ["AAA"])
+        h, hot = apply_history(payload("2026-09-26T11:00:00Z", {"AAA": (40, "观察")}), h)   # a source failed
+        h, hot = apply_history(payload("2026-09-26T11:30:00Z", {"AAA": (60, "重点关注")}), h)
+        self.assertEqual(hot, [])                                                          # still cooling down
+        h, hot = apply_history(payload("2026-09-27T00:00:00Z", {"AAA": (40, "观察")}), h)
+        h, hot = apply_history(payload("2026-09-27T00:30:00Z", {"AAA": (60, "重点关注")}), h)
+        self.assertEqual([o["symbol"] for o in hot], ["AAA"])                              # 13h later: alert again
+
 
 class AlertTest(unittest.TestCase):
     def test_format(self):

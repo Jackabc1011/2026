@@ -40,12 +40,14 @@ def collect(config):
     if os.environ.get("X_BEARER_TOKEN"):
         tweets = http.run_source("x", x_kol.fetch_x_api, kols, os.environ["X_BEARER_TOKEN"],
                                  lookback, max_per, alias_patterns, ignore)
-    elif config.get("rss_template"):
-        tweets = http.run_source("x", x_kol.fetch_rss, kols, config["rss_template"],
+    elif os.environ.get("RSS_TEMPLATE") or config.get("rss_template"):
+        # Env var wins so an RSSHub access key never has to be committed to config.yaml.
+        template = os.environ.get("RSS_TEMPLATE") or config["rss_template"]
+        tweets = http.run_source("x", x_kol.fetch_rss, kols, template,
                                  lookback, max_per, alias_patterns, ignore)
     else:
         tweets = []
-        http.skip_source("x", "未配置 X_BEARER_TOKEN 或 rss_template")
+        http.skip_source("x", "未配置 X_BEARER_TOKEN 或 RSS_TEMPLATE")
 
     # ---- smart money
     if config.get("wallets"):

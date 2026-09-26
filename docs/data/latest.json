@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-26T04:57:52Z",
+ "generated_at": "2026-09-26T05:30:49Z",
  "demo": true,
  "lookback_hours": 24,
  "sources": {
@@ -105,7 +105,7 @@
     "volume_24h": 3441649.873677323,
     "liquidity": 820000,
     "fdv": 12000000,
-    "pair_created_at": 1790254672543.951,
+    "pair_created_at": 1790256649479.558,
     "url": "https://dexscreener.com",
     "source": "dexscreener"
    },
@@ -115,7 +115,7 @@
      "name": "示例·交易所创始人",
      "text": "Building quietly. $FROGX community is on fire 🔥",
      "url": "https://x.com",
-     "created_at": "2026-09-26T04:52:52Z",
+     "created_at": "2026-09-26T05:25:49Z",
      "engagement": 17920
     },
     {
@@ -123,7 +123,7 @@
      "name": "示例·科技名人",
      "text": "链上看到大户持续吸筹 $FROGX，过去 6 小时净流入明显",
      "url": "https://x.com",
-     "created_at": "2026-09-26T04:15:52Z",
+     "created_at": "2026-09-26T04:48:49Z",
      "engagement": 2898
     },
     {
@@ -131,7 +131,7 @@
      "name": "示例·交易所创始人",
      "text": "Building quietly. $FROGX community is on fire 🔥",
      "url": "https://x.com",
-     "created_at": "2026-09-26T01:47:52Z",
+     "created_at": "2026-09-26T02:20:49Z",
      "engagement": 1026
     }
    ],
@@ -144,7 +144,7 @@
      "symbol": "FROGX",
      "address": "DemoFROGX",
      "amount": 641262,
-     "time": "2026-09-26T04:45:52Z",
+     "time": "2026-09-26T05:18:49Z",
      "tx_url": "https://solscan.io"
     },
     {
@@ -155,7 +155,7 @@
      "symbol": "FROGX",
      "address": "DemoFROGX",
      "amount": 37824,
-     "time": "2026-09-26T03:55:52Z",
+     "time": "2026-09-26T04:28:49Z",
      "tx_url": "https://solscan.io"
     },
     {
@@ -166,14 +166,14 @@
      "symbol": "FROGX",
      "address": "DemoFROGX",
      "amount": 760800,
-     "time": "2026-09-26T01:25:52Z",
+     "time": "2026-09-26T01:58:49Z",
      "tx_url": "https://solscan.io"
     }
    ],
    "prev_score": 80.9,
    "delta": 9.1,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     33.9,
     36.6,
@@ -228,7 +228,7 @@
     "volume_24h": 3825182.838785338,
     "liquidity": 3400000,
     "fdv": 90000000,
-    "pair_created_at": 1787158672543.951,
+    "pair_created_at": 1787160649479.558,
     "url": "https://dexscreener.com",
     "source": "dexscreener"
    },
@@ -238,7 +238,7 @@
      "name": "示例·链上侦探",
      "text": "$NOVA looks interesting here, not financial advice",
      "url": "https://x.com",
-     "created_at": "2026-09-26T03:38:52Z",
+     "created_at": "2026-09-26T04:11:49Z",
      "engagement": 19399
     },
     {
@@ -246,7 +246,7 @@
      "name": "示例·链上侦探",
      "text": "$NOVA looks interesting here, not financial advice",
      "url": "https://x.com",
-     "created_at": "2026-09-26T00:33:52Z",
+     "created_at": "2026-09-26T01:06:49Z",
      "engagement": 7214
     }
    ],
@@ -259,14 +259,14 @@
      "symbol": "NOVA",
      "address": "DemoNOVA",
      "amount": 598508,
-     "time": "2026-09-26T03:05:52Z",
+     "time": "2026-09-26T03:38:49Z",
      "tx_url": "https://solscan.io"
     }
    ],
    "prev_score": null,
    "delta": null,
    "is_new": true,
-   "first_seen": "2026-09-26T04:57:52Z",
+   "first_seen": "2026-09-26T05:30:49Z",
    "trend": [
     null,
     null,
@@ -321,7 +321,7 @@
     "volume_24h": 6087062.892066081,
     "liquidity": 1300000,
     "fdv": 30000000,
-    "pair_created_at": 1789318672543.951,
+    "pair_created_at": 1789320649479.558,
     "url": "https://dexscreener.com",
     "source": "dexscreener"
    },
@@ -331,7 +331,7 @@
      "name": "示例·科技名人",
      "text": "链上看到大户持续吸筹 $BLOOM，过去 6 小时净流入明显",
      "url": "https://x.com",
-     "created_at": "2026-09-26T01:10:52Z",
+     "created_at": "2026-09-26T01:43:49Z",
      "engagement": 3120
     }
    ],
@@ -344,14 +344,14 @@
      "symbol": "BLOOM",
      "address": "DemoBLOOM",
      "amount": 218496,
-     "time": "2026-09-26T02:15:52Z",
+     "time": "2026-09-26T02:48:49Z",
      "tx_url": "https://solscan.io"
     }
    ],
    "prev_score": 68.9,
    "delta": -1.8,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     65.0,
     64.5,
@@ -415,7 +415,7 @@
      "name": "示例·行业媒体",
      "text": "Watching $ORBIT and $BTC today",
      "url": "https://x.com",
-     "created_at": "2026-09-26T02:24:52Z",
+     "created_at": "2026-09-26T02:57:49Z",
      "engagement": 1091
     },
     {
@@ -423,7 +423,7 @@
      "name": "示例·行业媒体",
      "text": "Watching $KITTY and $BTC today",
      "url": "https://x.com",
-     "created_at": "2026-09-25T23:19:52Z",
+     "created_at": "2026-09-25T23:52:49Z",
      "engagement": 16609
     }
    ],
@@ -431,7 +431,7 @@
    "prev_score": 34.5,
    "delta": 2.5,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     37.9,
     34.5,
@@ -495,7 +495,7 @@
      "name": "示例·Meme 交易员",
      "text": "新叙事：Doge 生态资金加速流入，$DOGE 领涨",
      "url": "https://x.com",
-     "created_at": "2026-09-25T23:56:52Z",
+     "created_at": "2026-09-26T00:29:49Z",
      "engagement": 7673
     }
    ],
@@ -503,7 +503,7 @@
    "prev_score": 35.6,
    "delta": -1.0,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     32.0,
     34.1,
@@ -562,7 +562,7 @@
     "volume_24h": 225638.92622533167,
     "liquidity": 95000,
     "fdv": 41000000,
-    "pair_created_at": 1790326672543.951,
+    "pair_created_at": 1790328649479.558,
     "url": "https://dexscreener.com",
     "source": "dexscreener"
    },
@@ -572,7 +572,7 @@
      "name": "示例·Meme 交易员",
      "text": "新叙事：Kitty 生态资金加速流入，$KITTY 领涨",
      "url": "https://x.com",
-     "created_at": "2026-09-26T03:01:52Z",
+     "created_at": "2026-09-26T03:34:49Z",
      "engagement": 13875
     },
     {
@@ -580,7 +580,7 @@
      "name": "示例·行业媒体",
      "text": "Watching $KITTY and $BTC today",
      "url": "https://x.com",
-     "created_at": "2026-09-25T23:19:52Z",
+     "created_at": "2026-09-25T23:52:49Z",
      "engagement": 16609
     }
    ],
@@ -588,7 +588,7 @@
    "prev_score": 35.3,
    "delta": -4.1,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     70.2,
     70.3,
@@ -642,7 +642,7 @@
     "volume_24h": 20737326.169292316,
     "liquidity": 9800000,
     "fdv": 400000000,
-    "pair_created_at": 1772398672543.951,
+    "pair_created_at": 1772400649479.558,
     "url": "https://dexscreener.com",
     "source": "dexscreener"
    },
@@ -652,7 +652,7 @@
      "name": "示例·行业媒体",
      "text": "Watching $ORBIT and $BTC today",
      "url": "https://x.com",
-     "created_at": "2026-09-26T02:24:52Z",
+     "created_at": "2026-09-26T02:57:49Z",
      "engagement": 1091
     }
    ],
@@ -660,7 +660,7 @@
    "prev_score": 32.6,
    "delta": -1.7,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     30.1,
     28.6,
@@ -722,7 +722,7 @@
    "prev_score": 12.9,
    "delta": -1.5,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     8.7,
     9.7,
@@ -784,7 +784,7 @@
    "prev_score": 10.0,
    "delta": 0.1,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     10.1,
     10.9,
@@ -846,7 +846,7 @@
    "prev_score": 6.7,
    "delta": 1.9,
    "is_new": false,
-   "first_seen": "2026-09-25T17:27:52Z",
+   "first_seen": "2026-09-25T18:00:49Z",
    "trend": [
     5.8,
     11.3,
@@ -882,7 +882,7 @@
    "tag": "交易所",
    "text": "Building quietly. $FROGX community is on fire 🔥",
    "url": "https://x.com",
-   "created_at": "2026-09-26T04:52:52Z",
+   "created_at": "2026-09-26T05:25:49Z",
    "engagement": 17920,
    "symbols": [
     "FROGX"
@@ -894,7 +894,7 @@
    "tag": "名人",
    "text": "链上看到大户持续吸筹 $FROGX，过去 6 小时净流入明显",
    "url": "https://x.com",
-   "created_at": "2026-09-26T04:15:52Z",
+   "created_at": "2026-09-26T04:48:49Z",
    "engagement": 2898,
    "symbols": [
     "FROGX"
@@ -906,7 +906,7 @@
    "tag": "链上",
    "text": "$NOVA looks interesting here, not financial advice",
    "url": "https://x.com",
-   "created_at": "2026-09-26T03:38:52Z",
+   "created_at": "2026-09-26T04:11:49Z",
    "engagement": 19399,
    "symbols": [
     "NOVA"
@@ -918,7 +918,7 @@
    "tag": "交易员",
    "text": "新叙事：Kitty 生态资金加速流入，$KITTY 领涨",
    "url": "https://x.com",
-   "created_at": "2026-09-26T03:01:52Z",
+   "created_at": "2026-09-26T03:34:49Z",
    "engagement": 13875,
    "symbols": [
     "KITTY"
@@ -930,7 +930,7 @@
    "tag": "媒体",
    "text": "Watching $ORBIT and $BTC today",
    "url": "https://x.com",
-   "created_at": "2026-09-26T02:24:52Z",
+   "created_at": "2026-09-26T02:57:49Z",
    "engagement": 1091,
    "symbols": [
     "ORBIT",
@@ -943,7 +943,7 @@
    "tag": "交易所",
    "text": "Building quietly. $FROGX community is on fire 🔥",
    "url": "https://x.com",
-   "created_at": "2026-09-26T01:47:52Z",
+   "created_at": "2026-09-26T02:20:49Z",
    "engagement": 1026,
    "symbols": [
     "FROGX"
@@ -955,7 +955,7 @@
    "tag": "名人",
    "text": "链上看到大户持续吸筹 $BLOOM，过去 6 小时净流入明显",
    "url": "https://x.com",
-   "created_at": "2026-09-26T01:10:52Z",
+   "created_at": "2026-09-26T01:43:49Z",
    "engagement": 3120,
    "symbols": [
     "BLOOM"
@@ -967,7 +967,7 @@
    "tag": "链上",
    "text": "$NOVA looks interesting here, not financial advice",
    "url": "https://x.com",
-   "created_at": "2026-09-26T00:33:52Z",
+   "created_at": "2026-09-26T01:06:49Z",
    "engagement": 7214,
    "symbols": [
     "NOVA"
@@ -979,7 +979,7 @@
    "tag": "交易员",
    "text": "新叙事：Doge 生态资金加速流入，$DOGE 领涨",
    "url": "https://x.com",
-   "created_at": "2026-09-25T23:56:52Z",
+   "created_at": "2026-09-26T00:29:49Z",
    "engagement": 7673,
    "symbols": [
     "DOGE"
@@ -991,7 +991,7 @@
    "tag": "媒体",
    "text": "Watching $KITTY and $BTC today",
    "url": "https://x.com",
-   "created_at": "2026-09-25T23:19:52Z",
+   "created_at": "2026-09-25T23:52:49Z",
    "engagement": 16609,
    "symbols": [
     "KITTY",
@@ -1008,7 +1008,7 @@
    "symbol": "FROGX",
    "address": "DemoFROGX",
    "amount": 641262,
-   "time": "2026-09-26T04:45:52Z",
+   "time": "2026-09-26T05:18:49Z",
    "tx_url": "https://solscan.io"
   },
   {
@@ -1019,7 +1019,7 @@
    "symbol": "FROGX",
    "address": "DemoFROGX",
    "amount": 37824,
-   "time": "2026-09-26T03:55:52Z",
+   "time": "2026-09-26T04:28:49Z",
    "tx_url": "https://solscan.io"
   },
   {
@@ -1030,7 +1030,7 @@
    "symbol": "NOVA",
    "address": "DemoNOVA",
    "amount": 598508,
-   "time": "2026-09-26T03:05:52Z",
+   "time": "2026-09-26T03:38:49Z",
    "tx_url": "https://solscan.io"
   },
   {
@@ -1041,7 +1041,7 @@
    "symbol": "BLOOM",
    "address": "DemoBLOOM",
    "amount": 218496,
-   "time": "2026-09-26T02:15:52Z",
+   "time": "2026-09-26T02:48:49Z",
    "tx_url": "https://solscan.io"
   },
   {
@@ -1052,7 +1052,7 @@
    "symbol": "FROGX",
    "address": "DemoFROGX",
    "amount": 760800,
-   "time": "2026-09-26T01:25:52Z",
+   "time": "2026-09-26T01:58:49Z",
    "tx_url": "https://solscan.io"
   }
  ],
@@ -1069,7 +1069,7 @@
     "volume_24h": 3441649.873677323,
     "liquidity": 820000,
     "fdv": 12000000,
-    "pair_created_at": 1790254672543.951,
+    "pair_created_at": 1790256649479.558,
     "url": "https://dexscreener.com",
     "source": "coingecko",
     "rank": 2
@@ -1085,7 +1085,7 @@
     "volume_24h": 3825182.838785338,
     "liquidity": 3400000,
     "fdv": 90000000,
-    "pair_created_at": 1787158672543.951,
+    "pair_created_at": 1787160649479.558,
     "url": "https://dexscreener.com",
     "source": "coingecko",
     "rank": 3
@@ -1101,7 +1101,7 @@
     "volume_24h": 20737326.169292316,
     "liquidity": 9800000,
     "fdv": 400000000,
-    "pair_created_at": 1772398672543.951,
+    "pair_created_at": 1772400649479.558,
     "url": "https://dexscreener.com",
     "source": "coingecko",
     "rank": 5
@@ -1119,7 +1119,7 @@
     "volume_24h": 3441649.873677323,
     "liquidity": 820000,
     "fdv": 12000000,
-    "pair_created_at": 1790254672543.951,
+    "pair_created_at": 1790256649479.558,
     "url": "https://dexscreener.com",
     "source": "dex_boost",
     "rank": 1,
@@ -1136,7 +1136,7 @@
     "volume_24h": 225638.92622533167,
     "liquidity": 95000,
     "fdv": 41000000,
-    "pair_created_at": 1790326672543.951,
+    "pair_created_at": 1790328649479.558,
     "url": "https://dexscreener.com",
     "source": "dex_boost",
     "rank": 3,
@@ -1153,7 +1153,7 @@
     "volume_24h": 6087062.892066081,
     "liquidity": 1300000,
     "fdv": 30000000,
-    "pair_created_at": 1789318672543.951,
+    "pair_created_at": 1789320649479.558,
     "url": "https://dexscreener.com",
     "source": "dex_boost",
     "rank": 5,

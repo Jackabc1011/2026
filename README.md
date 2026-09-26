@@ -19,6 +19,7 @@ python -m http.server 8000 -d docs      # 打开 http://localhost:8000
 
 # 2) 采集真实数据
 export X_BEARER_TOKEN=...        # 可选：X API v2，用来拉 KOL 推文
+export RSS_TEMPLATE=...          # 可选：不用 X API 时改用 RSSHub，见 deploy/rsshub
 export ETHERSCAN_API_KEY=...     # 可选：跟踪 EVM 聪明钱钱包
 export HELIUS_API_KEY=...        # 可选：跟踪 Solana 聪明钱钱包
 export ANTHROPIC_API_KEY=...     # 可选：生成 AI 简报
@@ -32,7 +33,7 @@ python -m collector --loop 15    # 每 15 分钟采集一次（本地常驻）
 
 | 维度 | 来源 | 需要 |
 |---|---|---|
-| 社交 KOL | X API v2 用户时间线；也可以用自建 RSSHub（`config.yaml` → `rss_template`） | `X_BEARER_TOKEN`（按量付费）或 RSS |
+| 社交 KOL | X API v2 用户时间线；或者免费的 RSSHub（见 [deploy/rsshub](deploy/rsshub/README.md)，可以直接在 Actions 里运行） | `X_BEARER_TOKEN`（按量付费），或 `TWITTER_AUTH_TOKEN` + `USE_RSSHUB=true`，或 `RSS_TEMPLATE` |
 | 聪明钱 | Etherscan V2 `tokentx`（eth/bsc/base/arbitrum）、Helius SWAP 交易（solana） | `ETHERSCAN_API_KEY` / `HELIUS_API_KEY` |
 | 价格动量 | DexScreener 交易对、币安现货（`data-api.binance.vision`） | 免费 |
 | 榜单热度 | CoinGecko 热搜、DexScreener Boost（付费推广）、币安 24h 涨幅榜 | 免费 |
@@ -77,7 +78,7 @@ python -m collector --loop 15    # 每 15 分钟采集一次（本地常驻）
 
 提醒内容：综合分和变化、价格、主要信号、风险，以及行情链接。可以设置 `DASHBOARD_URL`，在提醒里附上面板地址。
 
-第一次运行时还没有历史数据，所以不会推送。某次采集如果所有数据源都失败了，那一次不会写入历史，免得下一次把所有币种都当成新上榜。`--demo` 用的是模拟历史，不会写入 history.json。
+第一次运行时还没有历史数据，所以不会推送。同一个币种 12 小时内只提醒一次：比如某次采集有个数据源失败，导致评级先掉下去又升回来，也不会重复推送。某次采集如果所有数据源都失败了，那一次不会写入历史，免得下一次把所有币种都当成新上榜。`--demo` 用的是模拟历史，不会写入 history.json。
 
 ## 配置 KOL 与钱包
 

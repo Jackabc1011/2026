@@ -21,6 +21,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    services:
+      # Optional free tweet source: set repo variable USE_RSSHUB=true and secret TWITTER_AUTH_TOKEN.
+      # An empty image means the service is not started.
+      rsshub:
+        image: ${{ vars.USE_RSSHUB == 'true' && 'diygod/rsshub:latest' || '' }}
+        ports:
+          - 1200:1200
+        env:
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
+          CACHE_TYPE: memory
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,6 +42,7 @@ jobs:
       - name: Collect
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          RSS_TEMPLATE: ${{ secrets.RSS_TEMPLATE }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -40,9 +51,14 @@ jobs:
           ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
           # The published site; override with a repo variable if you use a custom domain.
           DASHBOARD_URL: ${{ vars.DASHBOARD_URL || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}
+          USE_RSSHUB: ${{ vars.USE_RSSHUB }}
         run: |
           # Score history lives on the published site; fetch it so deltas and alerts carry over.
           export HISTORY_URL="${DASHBOARD_URL%/}/data/history.json"
+          if [ "$USE_RSSHUB" = "true" ] && [ -z "$X_BEARER_TOKEN" ] && [ -z "$RSS_TEMPLATE" ]; then
+            export RSS_TEMPLATE="http://localhost:1200/twitter/user/{handle}"
+            for i in $(seq 1 30); do curl -sf -o /dev/null http://localhost:1200/ && break; sleep 2; done
+          fi
           python -m collector
       - uses: actions/upload-pages-artifact@v3
         with:

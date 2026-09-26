@@ -1,0 +1,28 @@
+# Self-hosted RSSHub for Alpha Radar (free alternative to the paid X API).
+#   cp .env.example .env   # fill in TWITTER_AUTH_TOKEN and ACCESS_KEY
+#   docker compose up -d
+# Then set RSS_TEMPLATE=https://<your-host>:1200/twitter/user/{handle}?key=<ACCESS_KEY>
+services:
+  rsshub:
+    image: diygod/rsshub:latest
+    restart: unless-stopped
+    ports:
+      - "1200:1200"
+    environment:
+      NODE_ENV: production
+      CACHE_TYPE: redis
+      REDIS_URL: redis://redis:6379/
+      CACHE_EXPIRE: 600              # seconds; keeps X request volume (and ban risk) down
+      TWITTER_AUTH_TOKEN: ${TWITTER_AUTH_TOKEN}
+      ACCESS_KEY: ${ACCESS_KEY}      # required on a public host, otherwise anyone can use your X account
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
