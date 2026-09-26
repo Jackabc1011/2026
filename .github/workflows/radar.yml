@@ -24,16 +24,6 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || vars.RADAR_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    services:
-      # Optional free tweet source: set repo variable USE_RSSHUB=true and secret TWITTER_AUTH_TOKEN.
-      # An empty image means the service is not started.
-      rsshub:
-        image: ${{ vars.USE_RSSHUB == 'true' && 'diygod/rsshub:latest' || '' }}
-        ports:
-          - 1200:1200
-        env:
-          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
-          CACHE_TYPE: memory
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,6 +32,15 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests
+      - name: Start RSSHub (optional free tweet source)
+        # Enable with repo variable USE_RSSHUB=true and secret TWITTER_AUTH_TOKEN.
+        if: vars.USE_RSSHUB == 'true'
+        env:
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
+        run: |
+          docker run -d --name rsshub -p 1200:1200 -e TWITTER_AUTH_TOKEN -e CACHE_TYPE=memory diygod/rsshub:latest
+          for i in $(seq 1 45); do curl -sf -o /dev/null http://localhost:1200/ && echo "RSSHub up" && exit 0; sleep 2; done
+          echo "::warning::RSSHub did not become ready"; docker logs --tail 50 rsshub
       - name: Collect
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
@@ -60,7 +59,6 @@ jobs:
           export HISTORY_URL="${DASHBOARD_URL%/}/data/history.json"
           if [ "$USE_RSSHUB" = "true" ] && [ -z "$X_BEARER_TOKEN" ] && [ -z "$RSS_TEMPLATE" ]; then
             export RSS_TEMPLATE="http://localhost:1200/twitter/user/{handle}"
-            for i in $(seq 1 30); do curl -sf -o /dev/null http://localhost:1200/ && break; sleep 2; done
           fi
           python -m collector
       - uses: actions/upload-pages-artifact@v3
