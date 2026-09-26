@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alpha 雷达</title>
+<meta name="description" content="聚合 X 上 KOL、聪明钱钱包与市场热度，蒸馏出热门币种和交易机会">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◎</span>
+    <div>
+      <h1>Alpha 雷达</h1>
+      <p class="sub">KOL · 聪明钱 · 市场热度 多源蒸馏</p>
+    </div>
+  </div>
+  <div class="meta">
+    <span id="updated">加载中…</span>
+    <button id="refresh" type="button" title="重新加载数据">刷新</button>
+    <button id="theme" type="button" title="切换深色/浅色">◐</button>
+  </div>
+</header>
+
+<div id="demo-banner" class="banner" hidden>
+  当前为<strong>模拟数据</strong>（<code>python -m collector --demo</code>）。配置 API Key 后运行 <code>python -m collector</code> 获取真实数据。
+</div>
+
+<main>
+  <section class="strip" aria-label="市场概况">
+    <div id="majors" class="majors"></div>
+    <div id="fng" class="tile"></div>
+  </section>
+
+  <section id="sources" class="sources" aria-label="数据源状态"></section>
+
+  <section id="brief-card" class="card" hidden>
+    <h2>AI 简报 <small id="brief-model"></small></h2>
+    <div id="brief" class="brief"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>机会榜 <small>多源信号共振排序</small></h2>
+      <div class="filters">
+        <input id="q" type="search" placeholder="搜索币种" aria-label="搜索币种">
+        <div class="seg" role="group" aria-label="评级">
+          <button type="button" data-rating="" class="on">全部</button>
+          <button type="button" data-rating="重点关注">重点关注</button>
+          <button type="button" data-rating="观察">观察+</button>
+        </div>
+        <label class="chk"><input id="hide-risky" type="checkbox"> 隐藏高风险</label>
+      </div>
+    </div>
+    <div class="legend" aria-label="维度图例">
+      <span><i class="sw d-social"></i>社交 KOL</span>
+      <span><i class="sw d-smart_money"></i>聪明钱</span>
+      <span><i class="sw d-momentum"></i>价格动量</span>
+      <span><i class="sw d-attention"></i>榜单热度</span>
+      <span class="hint">点击行查看推文、钱包与风险明细</span>
+    </div>
+    <div class="table-wrap">
+      <table id="opps">
+        <thead>
+          <tr>
+            <th class="num hide-sm">#</th><th>币种</th><th class="num">综合分</th><th>四维信号</th>
+            <th class="num hide-sm">价格</th><th class="num hide-sm">1h</th><th class="num">24h</th>
+            <th class="num hide-sm">流动性</th><th class="hide-md">主要信号</th><th>评级</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="opps-empty" class="empty" hidden>没有符合条件的币种</p>
+    </div>
+  </section>
+
+  <div class="cols">
+    <section class="card">
+      <div class="card-head">
+        <h2>KOL 动态</h2>
+        <div id="kol-tags" class="seg small" role="group" aria-label="KOL 分类"></div>
+      </div>
+      <ul id="feed" class="feed"></ul>
+    </section>
+    <section class="card">
+      <h2>聪明钱动向</h2>
+      <ul id="wallets" class="feed"></ul>
+    </section>
+  </div>
+
+  <section class="cols three">
+    <div class="card"><h2>CoinGecko 热搜</h2><ol id="t-cg" class="rank"></ol></div>
+    <div class="card"><h2>DEX 推广榜 <small>付费推广，谨慎</small></h2><ol id="t-dex" class="rank"></ol></div>
+    <div class="card"><h2>币安 24h 涨幅榜</h2><ol id="t-bn" class="rank"></ol></div>
+  </section>
+</main>
+
+<footer>
+  数据来自 X、CoinGecko、DexScreener、Binance、Etherscan、Helius 等公开接口，由规则打分自动生成。
+  KOL 提及不等于看多，付费推广不等于价值。<strong>不构成投资建议，请自行判断并控制仓位。</strong>
+</footer>
+
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,925 @@
+{
+ "generated_at": "2026-09-26T01:13:19Z",
+ "demo": true,
+ "lookback_hours": 24,
+ "sources": {
+  "binance": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  },
+  "coingecko": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  },
+  "dexscreener": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  },
+  "x": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  },
+  "wallets": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  },
+  "fear_greed": {
+   "ok": true,
+   "count": 0,
+   "error": null,
+   "demo": true
+  }
+ },
+ "market": {
+  "fear_greed": {
+   "value": 63,
+   "label": "Greed"
+  },
+  "majors": [
+   {
+    "symbol": "BTC",
+    "price": 100000.0,
+    "change_24h": 1.8
+   },
+   {
+    "symbol": "ETH",
+    "price": 4000.0,
+    "change_24h": 3.1
+   },
+   {
+    "symbol": "SOL",
+    "price": 200.0,
+    "change_24h": 5.6
+   },
+   {
+    "symbol": "BNB",
+    "price": 900.0,
+    "change_24h": 0.9
+   },
+   {
+    "symbol": "DOGE",
+    "price": 0.25,
+    "change_24h": 9.4
+   }
+  ]
+ },
+ "opportunities": [
+  {
+   "symbol": "FROGX",
+   "name": "Frogx",
+   "score": 90.0,
+   "components": {
+    "social": 98.4,
+    "smart_money": 92.0,
+    "momentum": 75.1,
+    "attention": 81.1
+   },
+   "confluence": 4,
+   "rating": "重点关注",
+   "signals": [
+    "KOL 提及：示例·交易所创始人、示例·科技名人（3 条）",
+    "聪明钱买入：3 个钱包",
+    "DEX 推广榜 #1（付费）",
+    "CoinGecko 热搜 #2",
+    "1h 拉升 +8.2%"
+   ],
+   "risks": [
+    "新币，上线 40 小时"
+   ],
+   "market": {
+    "chain": "solana",
+    "address": "DemoFROGXAddress0",
+    "price": 0.0123,
+    "change_1h": 8.2,
+    "change_24h": 64.0,
+    "volume_24h": 3441649.873677323,
+    "liquidity": 820000,
+    "fdv": 12000000,
+    "pair_created_at": 1790241199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dexscreener"
+   },
+   "mentions": [
+    {
+     "handle": "demo_exchange",
+     "name": "示例·交易所创始人",
+     "text": "Building quietly. $FROGX community is on fire 🔥",
+     "url": "https://x.com",
+     "created_at": "2026-09-26T01:08:19Z",
+     "engagement": 17920
+    },
+    {
+     "handle": "demo_celebrity",
+     "name": "示例·科技名人",
+     "text": "链上看到大户持续吸筹 $FROGX，过去 6 小时净流入明显",
+     "url": "https://x.com",
+     "created_at": "2026-09-26T00:31:19Z",
+     "engagement": 2898
+    },
+    {
+     "handle": "demo_exchange",
+     "name": "示例·交易所创始人",
+     "text": "Building quietly. $FROGX community is on fire 🔥",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T22:03:19Z",
+     "engagement": 1026
+    }
+   ],
+   "buys": [
+    {
+     "label": "示例聪明钱 A",
+     "wallet": "DemoWalletA",
+     "chain": "solana",
+     "weight": 1.0,
+     "symbol": "FROGX",
+     "address": "DemoFROGX",
+     "amount": 641262,
+     "time": "2026-09-26T01:01:19Z",
+     "tx_url": "https://solscan.io"
+    },
+    {
+     "label": "示例聪明钱 B",
+     "wallet": "DemoWalletB",
+     "chain": "solana",
+     "weight": 1.0,
+     "symbol": "FROGX",
+     "address": "DemoFROGX",
+     "amount": 37824,
+     "time": "2026-09-26T00:11:19Z",
+     "tx_url": "https://solscan.io"
+    },
+    {
+     "label": "示例聪明钱 C",
+     "wallet": "DemoWalletC",
+     "chain": "solana",
+     "weight": 1.0,
+     "symbol": "FROGX",
+     "address": "DemoFROGX",
+     "amount": 760800,
+     "time": "2026-09-25T21:41:19Z",
+     "tx_url": "https://solscan.io"
+    }
+   ]
+  },
+  {
+   "symbol": "NOVA",
+   "name": "Nova",
+   "score": 76.0,
+   "components": {
+    "social": 89.1,
+    "smart_money": 55.3,
+    "momentum": 28.2,
+    "attention": 66.2
+   },
+   "confluence": 3,
+   "rating": "重点关注",
+   "signals": [
+    "KOL 提及：示例·链上侦探（2 条）",
+    "聪明钱买入：1 个钱包",
+    "CoinGecko 热搜 #3"
+   ],
+   "risks": [],
+   "market": {
+    "chain": "base",
+    "address": "DemoNOVAAddress1",
+    "price": 1.84,
+    "change_1h": 2.1,
+    "change_24h": 18.5,
+    "volume_24h": 3825182.838785338,
+    "liquidity": 3400000,
+    "fdv": 90000000,
+    "pair_created_at": 1787145199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dexscreener"
+   },
+   "mentions": [
+    {
+     "handle": "demo_onchain",
+     "name": "示例·链上侦探",
+     "text": "$NOVA looks interesting here, not financial advice",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T23:54:19Z",
+     "engagement": 19399
+    },
+    {
+     "handle": "demo_onchain",
+     "name": "示例·链上侦探",
+     "text": "$NOVA looks interesting here, not financial advice",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T20:49:19Z",
+     "engagement": 7214
+    }
+   ],
+   "buys": [
+    {
+     "label": "示例聪明钱 A",
+     "wallet": "DemoWalletA",
+     "chain": "solana",
+     "weight": 1.0,
+     "symbol": "NOVA",
+     "address": "DemoNOVA",
+     "amount": 598508,
+     "time": "2026-09-25T23:21:19Z",
+     "tx_url": "https://solscan.io"
+    }
+   ]
+  },
+  {
+   "symbol": "BLOOM",
+   "name": "Bloom",
+   "score": 67.1,
+   "components": {
+    "social": 63.5,
+    "smart_money": 51.9,
+    "momentum": 42.7,
+    "attention": 35.2
+   },
+   "confluence": 4,
+   "rating": "重点关注",
+   "signals": [
+    "KOL 提及：示例·科技名人（1 条）",
+    "聪明钱买入：1 个钱包",
+    "DEX 推广榜 #5（付费）"
+   ],
+   "risks": [],
+   "market": {
+    "chain": "bsc",
+    "address": "DemoBLOOMAddress4",
+    "price": 0.337,
+    "change_1h": 4.4,
+    "change_24h": 26.0,
+    "volume_24h": 6087062.892066081,
+    "liquidity": 1300000,
+    "fdv": 30000000,
+    "pair_created_at": 1789305199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dexscreener"
+   },
+   "mentions": [
+    {
+     "handle": "demo_celebrity",
+     "name": "示例·科技名人",
+     "text": "链上看到大户持续吸筹 $BLOOM，过去 6 小时净流入明显",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T21:26:19Z",
+     "engagement": 3120
+    }
+   ],
+   "buys": [
+    {
+     "label": "示例聪明钱 C",
+     "wallet": "DemoWalletC",
+     "chain": "solana",
+     "weight": 1.0,
+     "symbol": "BLOOM",
+     "address": "DemoBLOOM",
+     "amount": 218496,
+     "time": "2026-09-25T22:31:19Z",
+     "tx_url": "https://solscan.io"
+    }
+   ]
+  },
+  {
+   "symbol": "BTC",
+   "name": "BTC",
+   "score": 37.0,
+   "components": {
+    "social": 69.6,
+    "smart_money": 0.0,
+    "momentum": 3.6,
+    "attention": 57.3
+   },
+   "confluence": 2,
+   "rating": "观察",
+   "signals": [
+    "KOL 提及：示例·行业媒体（2 条）",
+    "币安涨幅榜 #4"
+   ],
+   "risks": [],
+   "market": {
+    "chain": null,
+    "address": null,
+    "price": 100000.0,
+    "change_1h": null,
+    "change_24h": 1.8,
+    "volume_24h": 2000000000.0,
+    "liquidity": null,
+    "fdv": null,
+    "pair_created_at": null,
+    "url": null,
+    "source": "binance"
+   },
+   "mentions": [
+    {
+     "handle": "demo_media",
+     "name": "示例·行业媒体",
+     "text": "Watching $ORBIT and $BTC today",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T22:40:19Z",
+     "engagement": 1091
+    },
+    {
+     "handle": "demo_media",
+     "name": "示例·行业媒体",
+     "text": "Watching $KITTY and $BTC today",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T19:35:19Z",
+     "engagement": 16609
+    }
+   ],
+   "buys": []
+  },
+  {
+   "symbol": "DOGE",
+   "name": "DOGE",
+   "score": 34.6,
+   "components": {
+    "social": 52.1,
+    "smart_money": 0.0,
+    "momentum": 18.6,
+    "attention": 63.2
+   },
+   "confluence": 2,
+   "rating": "噪音",
+   "signals": [
+    "KOL 提及：示例·Meme 交易员（1 条）",
+    "币安涨幅榜 #1"
+   ],
+   "risks": [],
+   "market": {
+    "chain": null,
+    "address": null,
+    "price": 0.25,
+    "change_1h": null,
+    "change_24h": 9.4,
+    "volume_24h": 400000000.0,
+    "liquidity": null,
+    "fdv": null,
+    "pair_created_at": null,
+    "url": null,
+    "source": "binance"
+   },
+   "mentions": [
+    {
+     "handle": "demo_trader",
+     "name": "示例·Meme 交易员",
+     "text": "新叙事：Doge 生态资金加速流入，$DOGE 领涨",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T20:12:19Z",
+     "engagement": 7673
+    }
+   ],
+   "buys": []
+  },
+  {
+   "symbol": "KITTY",
+   "name": "Kitty",
+   "score": 31.2,
+   "components": {
+    "social": 80.2,
+    "smart_money": 0.0,
+    "momentum": 48.6,
+    "attention": 37.3
+   },
+   "confluence": 3,
+   "rating": "噪音",
+   "signals": [
+    "KOL 提及：示例·Meme 交易员、示例·行业媒体（2 条）",
+    "DEX 推广榜 #3（付费）"
+   ],
+   "risks": [
+    "流动性低（$95,000）",
+    "新币，上线 20 小时",
+    "24h 已涨 210%，追高风险",
+    "FDV/流动性比过高，易被砸盘"
+   ],
+   "market": {
+    "chain": "solana",
+    "address": "DemoKITTYAddress2",
+    "price": 0.00041,
+    "change_1h": -3.5,
+    "change_24h": 210.0,
+    "volume_24h": 225638.92622533167,
+    "liquidity": 95000,
+    "fdv": 41000000,
+    "pair_created_at": 1790313199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dexscreener"
+   },
+   "mentions": [
+    {
+     "handle": "demo_trader",
+     "name": "示例·Meme 交易员",
+     "text": "新叙事：Kitty 生态资金加速流入，$KITTY 领涨",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T23:17:19Z",
+     "engagement": 13875
+    },
+    {
+     "handle": "demo_media",
+     "name": "示例·行业媒体",
+     "text": "Watching $KITTY and $BTC today",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T19:35:19Z",
+     "engagement": 16609
+    }
+   ],
+   "buys": []
+  },
+  {
+   "symbol": "ORBIT",
+   "name": "Orbit",
+   "score": 30.9,
+   "components": {
+    "social": 48.1,
+    "smart_money": 0.0,
+    "momentum": 11.4,
+    "attention": 60.0
+   },
+   "confluence": 2,
+   "rating": "噪音",
+   "signals": [
+    "KOL 提及：示例·行业媒体（1 条）",
+    "CoinGecko 热搜 #5"
+   ],
+   "risks": [],
+   "market": {
+    "chain": "eth",
+    "address": "DemoORBITAddress3",
+    "price": 12.7,
+    "change_1h": 0.6,
+    "change_24h": 7.9,
+    "volume_24h": 20737326.169292316,
+    "liquidity": 9800000,
+    "fdv": 400000000,
+    "pair_created_at": 1772385199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dexscreener"
+   },
+   "mentions": [
+    {
+     "handle": "demo_media",
+     "name": "示例·行业媒体",
+     "text": "Watching $ORBIT and $BTC today",
+     "url": "https://x.com",
+     "created_at": "2026-09-25T22:40:19Z",
+     "engagement": 1091
+    }
+   ],
+   "buys": []
+  },
+  {
+   "symbol": "SOL",
+   "name": "SOL",
+   "score": 11.4,
+   "components": {
+    "social": 0.0,
+    "smart_money": 0.0,
+    "momentum": 11.2,
+    "attention": 61.3
+   },
+   "confluence": 1,
+   "rating": "噪音",
+   "signals": [
+    "币安涨幅榜 #2"
+   ],
+   "risks": [],
+   "market": {
+    "chain": null,
+    "address": null,
+    "price": 200.0,
+    "change_1h": null,
+    "change_24h": 5.6,
+    "volume_24h": 500000000.0,
+    "liquidity": null,
+    "fdv": null,
+    "pair_created_at": null,
+    "url": null,
+    "source": "binance"
+   },
+   "mentions": [],
+   "buys": []
+  },
+  {
+   "symbol": "ETH",
+   "name": "ETH",
+   "score": 10.1,
+   "components": {
+    "social": 0.0,
+    "smart_money": 0.0,
+    "momentum": 6.2,
+    "attention": 59.3
+   },
+   "confluence": 1,
+   "rating": "噪音",
+   "signals": [
+    "币安涨幅榜 #3"
+   ],
+   "risks": [],
+   "market": {
+    "chain": null,
+    "address": null,
+    "price": 4000.0,
+    "change_1h": null,
+    "change_24h": 3.1,
+    "volume_24h": 1000000000.0,
+    "liquidity": null,
+    "fdv": null,
+    "pair_created_at": null,
+    "url": null,
+    "source": "binance"
+   },
+   "mentions": [],
+   "buys": []
+  },
+  {
+   "symbol": "BNB",
+   "name": "BNB",
+   "score": 8.6,
+   "components": {
+    "social": 0.0,
+    "smart_money": 0.0,
+    "momentum": 1.8,
+    "attention": 55.1
+   },
+   "confluence": 1,
+   "rating": "噪音",
+   "signals": [
+    "币安涨幅榜 #5"
+   ],
+   "risks": [],
+   "market": {
+    "chain": null,
+    "address": null,
+    "price": 900.0,
+    "change_1h": null,
+    "change_24h": 0.9,
+    "volume_24h": 300000000.0,
+    "liquidity": null,
+    "fdv": null,
+    "pair_created_at": null,
+    "url": null,
+    "source": "binance"
+   },
+   "mentions": [],
+   "buys": []
+  }
+ ],
+ "kol_feed": [
+  {
+   "handle": "demo_exchange",
+   "name": "示例·交易所创始人",
+   "tag": "交易所",
+   "text": "Building quietly. $FROGX community is on fire 🔥",
+   "url": "https://x.com",
+   "created_at": "2026-09-26T01:08:19Z",
+   "engagement": 17920,
+   "symbols": [
+    "FROGX"
+   ]
+  },
+  {
+   "handle": "demo_celebrity",
+   "name": "示例·科技名人",
+   "tag": "名人",
+   "text": "链上看到大户持续吸筹 $FROGX，过去 6 小时净流入明显",
+   "url": "https://x.com",
+   "created_at": "2026-09-26T00:31:19Z",
+   "engagement": 2898,
+   "symbols": [
+    "FROGX"
+   ]
+  },
+  {
+   "handle": "demo_onchain",
+   "name": "示例·链上侦探",
+   "tag": "链上",
+   "text": "$NOVA looks interesting here, not financial advice",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T23:54:19Z",
+   "engagement": 19399,
+   "symbols": [
+    "NOVA"
+   ]
+  },
+  {
+   "handle": "demo_trader",
+   "name": "示例·Meme 交易员",
+   "tag": "交易员",
+   "text": "新叙事：Kitty 生态资金加速流入，$KITTY 领涨",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T23:17:19Z",
+   "engagement": 13875,
+   "symbols": [
+    "KITTY"
+   ]
+  },
+  {
+   "handle": "demo_media",
+   "name": "示例·行业媒体",
+   "tag": "媒体",
+   "text": "Watching $ORBIT and $BTC today",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T22:40:19Z",
+   "engagement": 1091,
+   "symbols": [
+    "ORBIT",
+    "BTC"
+   ]
+  },
+  {
+   "handle": "demo_exchange",
+   "name": "示例·交易所创始人",
+   "tag": "交易所",
+   "text": "Building quietly. $FROGX community is on fire 🔥",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T22:03:19Z",
+   "engagement": 1026,
+   "symbols": [
+    "FROGX"
+   ]
+  },
+  {
+   "handle": "demo_celebrity",
+   "name": "示例·科技名人",
+   "tag": "名人",
+   "text": "链上看到大户持续吸筹 $BLOOM，过去 6 小时净流入明显",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T21:26:19Z",
+   "engagement": 3120,
+   "symbols": [
+    "BLOOM"
+   ]
+  },
+  {
+   "handle": "demo_onchain",
+   "name": "示例·链上侦探",
+   "tag": "链上",
+   "text": "$NOVA looks interesting here, not financial advice",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T20:49:19Z",
+   "engagement": 7214,
+   "symbols": [
+    "NOVA"
+   ]
+  },
+  {
+   "handle": "demo_trader",
+   "name": "示例·Meme 交易员",
+   "tag": "交易员",
+   "text": "新叙事：Doge 生态资金加速流入，$DOGE 领涨",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T20:12:19Z",
+   "engagement": 7673,
+   "symbols": [
+    "DOGE"
+   ]
+  },
+  {
+   "handle": "demo_media",
+   "name": "示例·行业媒体",
+   "tag": "媒体",
+   "text": "Watching $KITTY and $BTC today",
+   "url": "https://x.com",
+   "created_at": "2026-09-25T19:35:19Z",
+   "engagement": 16609,
+   "symbols": [
+    "KITTY",
+    "BTC"
+   ]
+  }
+ ],
+ "smart_money": [
+  {
+   "label": "示例聪明钱 A",
+   "wallet": "DemoWalletA",
+   "chain": "solana",
+   "weight": 1.0,
+   "symbol": "FROGX",
+   "address": "DemoFROGX",
+   "amount": 641262,
+   "time": "2026-09-26T01:01:19Z",
+   "tx_url": "https://solscan.io"
+  },
+  {
+   "label": "示例聪明钱 B",
+   "wallet": "DemoWalletB",
+   "chain": "solana",
+   "weight": 1.0,
+   "symbol": "FROGX",
+   "address": "DemoFROGX",
+   "amount": 37824,
+   "time": "2026-09-26T00:11:19Z",
+   "tx_url": "https://solscan.io"
+  },
+  {
+   "label": "示例聪明钱 A",
+   "wallet": "DemoWalletA",
+   "chain": "solana",
+   "weight": 1.0,
+   "symbol": "NOVA",
+   "address": "DemoNOVA",
+   "amount": 598508,
+   "time": "2026-09-25T23:21:19Z",
+   "tx_url": "https://solscan.io"
+  },
+  {
+   "label": "示例聪明钱 C",
+   "wallet": "DemoWalletC",
+   "chain": "solana",
+   "weight": 1.0,
+   "symbol": "BLOOM",
+   "address": "DemoBLOOM",
+   "amount": 218496,
+   "time": "2026-09-25T22:31:19Z",
+   "tx_url": "https://solscan.io"
+  },
+  {
+   "label": "示例聪明钱 C",
+   "wallet": "DemoWalletC",
+   "chain": "solana",
+   "weight": 1.0,
+   "symbol": "FROGX",
+   "address": "DemoFROGX",
+   "amount": 760800,
+   "time": "2026-09-25T21:41:19Z",
+   "tx_url": "https://solscan.io"
+  }
+ ],
+ "trending": {
+  "coingecko": [
+   {
+    "symbol": "FROGX",
+    "name": "Frogx",
+    "chain": "solana",
+    "address": "DemoFROGXAddress0",
+    "price": 0.0123,
+    "change_1h": 8.2,
+    "change_24h": 64.0,
+    "volume_24h": 3441649.873677323,
+    "liquidity": 820000,
+    "fdv": 12000000,
+    "pair_created_at": 1790241199027.571,
+    "url": "https://dexscreener.com",
+    "source": "coingecko",
+    "rank": 2
+   },
+   {
+    "symbol": "NOVA",
+    "name": "Nova",
+    "chain": "base",
+    "address": "DemoNOVAAddress1",
+    "price": 1.84,
+    "change_1h": 2.1,
+    "change_24h": 18.5,
+    "volume_24h": 3825182.838785338,
+    "liquidity": 3400000,
+    "fdv": 90000000,
+    "pair_created_at": 1787145199027.571,
+    "url": "https://dexscreener.com",
+    "source": "coingecko",
+    "rank": 3
+   },
+   {
+    "symbol": "ORBIT",
+    "name": "Orbit",
+    "chain": "eth",
+    "address": "DemoORBITAddress3",
+    "price": 12.7,
+    "change_1h": 0.6,
+    "change_24h": 7.9,
+    "volume_24h": 20737326.169292316,
+    "liquidity": 9800000,
+    "fdv": 400000000,
+    "pair_created_at": 1772385199027.571,
+    "url": "https://dexscreener.com",
+    "source": "coingecko",
+    "rank": 5
+   }
+  ],
+  "dex_boosts": [
+   {
+    "symbol": "FROGX",
+    "name": "Frogx",
+    "chain": "solana",
+    "address": "DemoFROGXAddress0",
+    "price": 0.0123,
+    "change_1h": 8.2,
+    "change_24h": 64.0,
+    "volume_24h": 3441649.873677323,
+    "liquidity": 820000,
+    "fdv": 12000000,
+    "pair_created_at": 1790241199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dex_boost",
+    "rank": 1,
+    "value": 500
+   },
+   {
+    "symbol": "KITTY",
+    "name": "Kitty",
+    "chain": "solana",
+    "address": "DemoKITTYAddress2",
+    "price": 0.00041,
+    "change_1h": -3.5,
+    "change_24h": 210.0,
+    "volume_24h": 225638.92622533167,
+    "liquidity": 95000,
+    "fdv": 41000000,
+    "pair_created_at": 1790313199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dex_boost",
+    "rank": 3,
+    "value": 380
+   },
+   {
+    "symbol": "BLOOM",
+    "name": "Bloom",
+    "chain": "bsc",
+    "address": "DemoBLOOMAddress4",
+    "price": 0.337,
+    "change_1h": 4.4,
+    "change_24h": 26.0,
+    "volume_24h": 6087062.892066081,
+    "liquidity": 1300000,
+    "fdv": 30000000,
+    "pair_created_at": 1789305199027.571,
+    "url": "https://dexscreener.com",
+    "source": "dex_boost",
+    "rank": 5,
+    "value": 260
+   }
+  ],
+  "binance_gainers": [
+   {
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "price": 0.25,
+    "change_24h": 9.4,
+    "change_1h": null,
+    "volume_24h": 400000000.0,
+    "source": "binance_gainer",
+    "rank": 1,
+    "value": 9.4
+   },
+   {
+    "symbol": "SOL",
+    "name": "SOL",
+    "price": 200.0,
+    "change_24h": 5.6,
+    "change_1h": null,
+    "volume_24h": 500000000.0,
+    "source": "binance_gainer",
+    "rank": 2,
+    "value": 5.6
+   },
+   {
+    "symbol": "ETH",
+    "name": "ETH",
+    "price": 4000.0,
+    "change_24h": 3.1,
+    "change_1h": null,
+    "volume_24h": 1000000000.0,
+    "source": "binance_gainer",
+    "rank": 3,
+    "value": 3.1
+   },
+   {
+    "symbol": "BTC",
+    "name": "BTC",
+    "price": 100000.0,
+    "change_24h": 1.8,
+    "change_1h": null,
+    "volume_24h": 2000000000.0,
+    "source": "binance_gainer",
+    "rank": 4,
+    "value": 1.8
+   },
+   {
+    "symbol": "BNB",
+    "name": "BNB",
+    "price": 900.0,
+    "change_24h": 0.9,
+    "change_1h": null,
+    "volume_24h": 300000000.0,
+    "source": "binance_gainer",
+    "rank": 5,
+    "value": 0.9
+   }
+  ]
+ },
+ "brief": {
+  "model": "demo",
+  "text": "**市场情绪**：偏贪婪（示例数据）。\n\n**热点叙事**\n- Solana Meme 继续吸金：FROGX 同时出现 KOL 提及、3 个聪明钱买入和热搜。\n- Base 生态 NOVA 获多位 KOL 讨论，涨幅温和。\n\n**值得关注**\n- FROGX：多源共振最强；风险是上线不足 2 天。\n- NOVA：社交+链上双信号；风险是 FDV 偏高。\n\n**注意**：KITTY 24h 已涨 210% 且流动性低，偏向追高/付费推广。"
+ }
+}

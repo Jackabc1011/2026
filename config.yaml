@@ -1,0 +1,71 @@
+# Alpha 雷达 配置
+# 所有 API Key 都通过环境变量提供（见 README），不要写进这个文件。
+
+lookback_hours: 24          # 只看最近 N 小时的推文 / 钱包交易
+half_life_hours: 6          # 信号时间衰减的半衰期：6 小时前的提及权重减半
+output: docs/data/latest.json
+
+# ---------------------------------------------------------------------------
+# X 上跟踪的 KOL。weight 表示对信号的信任度（0~1），tag 用于面板筛选。
+# 需要 X_BEARER_TOKEN（X API v2），或者配置下方 rss_template 走 RSS。
+# ---------------------------------------------------------------------------
+kols:
+  - {handle: cz_binance,      name: "赵长鹏 CZ",   weight: 1.0, tag: 交易所}
+  - {handle: heyibinance,     name: "何一 Yi He",  weight: 0.8, tag: 交易所}
+  - {handle: elonmusk,        name: "Elon Musk",   weight: 1.0, tag: 名人}
+  - {handle: VitalikButerin,  name: "Vitalik",     weight: 0.7, tag: 创始人}
+  - {handle: aeyakovenko,     name: "Toly (Solana)", weight: 0.6, tag: 创始人}
+  - {handle: justinsuntron,   name: "孙宇晨",       weight: 0.6, tag: 创始人}
+  - {handle: saylor,          name: "Michael Saylor", weight: 0.5, tag: 机构}
+  - {handle: brian_armstrong, name: "Brian Armstrong", weight: 0.6, tag: 交易所}
+  - {handle: blknoiz06,       name: "Ansem",       weight: 0.8, tag: 交易员}
+  - {handle: lookonchain,     name: "Lookonchain", weight: 0.9, tag: 链上}
+  - {handle: spotonchain,     name: "Spot On Chain", weight: 0.8, tag: 链上}
+  - {handle: EmberCN,         name: "余烬",         weight: 0.9, tag: 链上}
+  - {handle: ai_9684xtpa,     name: "Ai 姨",        weight: 0.8, tag: 链上}
+  - {handle: WuBlockchain,    name: "吴说",         weight: 0.6, tag: 媒体}
+
+# 可选：没有 X API 时，用自建 RSSHub 等服务拉推文。{handle} 会被替换。
+# rss_template: "https://your-rsshub.example.com/twitter/user/{handle}"
+rss_template: ""
+max_tweets_per_kol: 20
+
+# 推文里没写 $TICKER 时，用关键词识别币种（不区分大小写）
+aliases:
+  BTC:  [bitcoin, 比特币, 大饼]
+  ETH:  [ethereum, 以太坊, 二饼]
+  DOGE: [doge, dogecoin, 狗狗币]
+  SOL:  [solana]
+  BNB:  [bnb, 币安币]
+  XRP:  [ripple]
+
+# 不参与排名的符号（稳定币、包装币等）
+ignore_symbols: [USDT, USDC, DAI, FDUSD, TUSD, USDE, USDS, PYUSD, BUSD, USD1, WETH, WBTC, WBNB, WSOL, STETH, SOL_WRAPPED]
+
+# ---------------------------------------------------------------------------
+# 聪明钱钱包。地址请从 GMGN / Nansen / Arkham / Lookonchain 的盈利榜里挑选，
+# 这里不预置任何地址，避免给出未经核实的“盈利钱包”。
+#   chain: eth | bsc | base | arbitrum  -> 需要 ETHERSCAN_API_KEY（Etherscan V2，部分链需付费套餐）
+#   chain: solana                        -> 需要 HELIUS_API_KEY
+# ---------------------------------------------------------------------------
+wallets: []
+#  - {address: "0x0000000000000000000000000000000000000000", chain: eth,    label: "ETH 聪明钱 A", weight: 1.0}
+#  - {address: "SoLanaWalletAddressHere",                    chain: solana, label: "SOL Meme 狙击手", weight: 0.8}
+
+# ---------------------------------------------------------------------------
+# 蒸馏打分：四个维度各 0~100，按权重加权；多个维度同时出现（共振）会额外加分，
+# 风险标记会扣分；“重点关注”要求 ≥3 个维度共振且风险 ≤1 项。
+# ---------------------------------------------------------------------------
+scoring:
+  weights: {social: 0.35, smart_money: 0.30, momentum: 0.20, attention: 0.15}
+  confluence_bonus: 0.10        # 每多一个活跃维度，综合分 ×(1+0.10)
+  risk_penalty: 0.10            # 每个风险标记扣 10%（最多 4 个）
+  min_liquidity_usd: 100000     # 低于此流动性标记风险
+  new_pair_hours: 72            # 上线不足此时长标记为新币
+  overheated_change_24h: 80     # 24h 涨幅超过此值标记追高风险
+  top_n: 40                     # 面板展示的机会数量
+
+# 可选：设置 ANTHROPIC_API_KEY 后，用 Claude 把推文和榜单蒸馏成一段中文简报
+brief:
+  enabled: true
+  model: claude-opus-5
